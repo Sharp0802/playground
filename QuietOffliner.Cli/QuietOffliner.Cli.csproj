@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net4.8</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\QuietOffliner.Core\QuietOffliner.Core.csproj" />
+      <ProjectReference Include="..\QuietOffliner.JMana\QuietOffliner.JMana.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AngleSharp" Version="0.14.0" />
+      <PackageReference Include="System.Collections.Immutable" Version="5.0.0" />
+      <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+      <PackageReference Include="System.IO" Version="4.3.0" />
+      <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+      <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+      <PackageReference Include="System.Linq" Version="4.3.0" />
+      <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+      <PackageReference Include="System.Linq.Parallel" Version="4.3.0" />
+      <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+      <PackageReference Include="System.Net.Http" Version="4.3.4" />
+      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0-preview.2.21154.6" />
+      <PackageReference Include="System.Web.Http" Version="4.0.0" />
+      <PackageReference Include="System.Web.Http.Common" Version="4.0.20126.16343" />
+    </ItemGroup>
+
+</Project>
