@@ -10,8 +10,7 @@ namespace QuietOffliner.Core.Services
 	public static class WebRequestService
 	{
 		public const string ImageAccept = "image/*";
-		public const string HtmlAccept = "text/html";
-		public const string XmlAccept = "application/xml";
+		public const string HtmlAccept = "text/plain,text/html,text/xml,application/xhtml+xml,application/xml";
 		public const string NoCache = "no-cache";
 		public const string AcceptEncoding = "gzip, deflate, br";
 		public const string SecChUa = "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"91\", \"Google Chrome\";v=\"91\"";
