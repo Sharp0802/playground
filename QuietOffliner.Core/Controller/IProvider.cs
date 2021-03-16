@@ -13,6 +13,7 @@ namespace QuietOffliner.Core.Controller
 
         public Task<Request<Episode?>> LoadEpisode(string id);
         public Task<Request<ImmutableArray<EpisodeInfo>>> LoadEpisodeInfos(string query);
+        public Task<Request<ImmutableArray<EpisodeInfo>>> LoadRecentEpisodeInfos();
         
         public Task<Request<ImmutableArray<SeriesInfo>>> LoadRecentSeriesInfos();
         public Task<Request<ImmutableArray<SeriesInfo>>> LoadAllSeriesInfos(SearchRequest request);

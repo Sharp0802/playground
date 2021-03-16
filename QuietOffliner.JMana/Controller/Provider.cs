@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Management.Instrumentation;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
@@ -166,6 +165,11 @@ namespace QuietOffliner.JMana.Controller
 				}).Select(t => t.Result);
 
 			return Request<ImmutableArray<EpisodeInfo>>.Successful(seriesList.ToImmutableArray(), htmlCode);
+		}
+
+		public async Task<Request<ImmutableArray<EpisodeInfo>>> LoadRecentEpisodeInfos()
+		{
+			throw new NotImplementedException();
 		}
 
 		public async Task<Request<ImmutableArray<SeriesInfo>>> LoadRecentSeriesInfos() //Verified
