@@ -9,6 +9,7 @@ namespace QuietOffliner.Core.Controller
             Provider = provider;
         }
 
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private IProvider Provider { get; }
     }
 }

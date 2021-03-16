@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -18,7 +17,7 @@ namespace QuietOffliner.Core.Model.Markups
         private Xml(string xml)
             => Docs = XDocument.Parse(xml, LoadOptions.PreserveWhitespace);
 
-        public XDocument Docs { get; }
+        private XDocument Docs { get; }
 
         public Task Save(Stream stream)
         {

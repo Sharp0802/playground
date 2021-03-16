@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using QuietOffliner.Core.Services;
 using QuietOffliner.JMana.Controller;
 
 namespace QuietOffliner.Cli
 {
     internal static class Program
     {
-        private static async Task Main(string[] args)
+        private static async Task Main()
         {
             var provider = await Provider.New();
 

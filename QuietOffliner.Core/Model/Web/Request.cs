@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Net;
+﻿using System.Net;
 
 namespace QuietOffliner.Core.Model.Web
 {

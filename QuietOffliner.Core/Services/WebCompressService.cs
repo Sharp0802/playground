@@ -16,11 +16,11 @@ namespace QuietOffliner.Core.Services
             var encodingArray = encodings as string[] ?? encodings.ToArray();
             using Stream? decompressor = encodings switch
             {
-                var a when encodingArray.Any(e => e == "br")
+                _ when encodingArray.Any(e => e == "br")
                     => new BrotliStream(inStream, CompressionMode.Decompress),
-                var a when encodingArray.Any(e => e == "deflate")
+                _ when encodingArray.Any(e => e == "deflate")
                     => new DeflateStream(inStream, CompressionMode.Decompress),
-                var a when encodingArray.Any(e => e == "gzip")
+                _ when encodingArray.Any(e => e == "gzip")
                     => new GZipStream(inStream, CompressionMode.Decompress),
                 _   => null
             };

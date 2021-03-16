@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
-using QuietOffliner.Core.Model;
 using QuietOffliner.Core.Model.Markups;
 
 namespace QuietOffliner.Core.Services
@@ -12,7 +11,7 @@ namespace QuietOffliner.Core.Services
     {
         public static Task<string?> MetaData(this Html html, string name)
         {
-            var metadata = html.Docs?.QuerySelector($"meta[name=\"{name}'\"]");
+            var metadata = html.Docs.QuerySelector($"meta[name=\"{name}'\"]");
             return Task.FromResult(metadata?.GetAttribute("content"));
         }
 
