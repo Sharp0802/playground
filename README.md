@@ -1,11 +1,11 @@
-﻿#QuietOffliner
+﻿# QuietOffliner
 * * *
-##Language
+## Language
 * * *
 [English](./README.md)
 
 [한국어](./README.kor.md)
-##What is QuietOffliner
+## What is QuietOffliner
 * * *
 When the server they request detects it as a bot,
 Many web-scrapper programs often return "403 Forbidden".
