@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Polly;
-using QuietOffliner.Core.Services;
 
 namespace QuietOffliner.Core.Controller.Web
 {
@@ -30,18 +29,16 @@ namespace QuietOffliner.Core.Controller.Web
 			Client = new HttpClient(Handler);
 		}
 
-		public Task<HttpResponseMessage> SendAsync(Func<HttpRequestMessage> request, int maximalRetries)
+		public Task<HttpResponseMessage> SendAsync(Func<HttpRequestMessage> request, int maximalRetries = 20)
 		{
 			return Policy
 				.Handle<HttpRequestException>()
-				.OrResult<HttpResponseMessage>(response => !response.StatusCode.IsSuccesses())
-				.WaitAndRetryAsync(
+				.RetryAsync(
 					maximalRetries,
-					_ => TimeSpan.FromSeconds(5),
-					(exception, _, retryCount, _) =>
+					(exception, retryCount) =>
 					{
 						LogStream.WriteLineAsync($"Retry| {retryCount.ToString()}\n" +
-						                         $"Cause| {exception}.");
+						                         $"Cause| {exception}");
 					})
 				.ExecuteAsync(() => Client.SendAsync(request()));
 		}
