@@ -20,3 +20,10 @@ requested by Google Chrome to minimize this phenomenon.
 (But this means,
 this program requires you to write code
 for every site you want to apply)
+## Support Site
+* * *
+|Site Name|Progress  |Namespace              |
+|--------:|:---------|:---------------------:|
+|    JMana|As Lib    |QuietOffliner.JMana    |
+|    Pixiv|Not ready |QuietOffliner.Pixiv    |
+| Manatoki|Not ready |QuietOffliner.Manatoki |
