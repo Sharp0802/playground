@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using QuietOffliner.JMana.Controller;
 
@@ -43,7 +44,7 @@ namespace QuietOffliner.Cli
             Console.WriteLine(req.Value?.Tags.Aggregate((c, n) => c + "," + n));
             Console.WriteLine(req.Value?.Provider.Name);*/
 
-            var req = await provider.LoadRecentEpisodeInfos();
+            /*var req = await provider.LoadRecentEpisodeInfos();
 
             foreach (var ep in req.Value)
             {
@@ -51,7 +52,8 @@ namespace QuietOffliner.Cli
                 Console.WriteLine(ep.Id);
                 Console.WriteLine(ep.Date?.ToString("yyyy-MM-dd"));
                 Console.WriteLine(ep.Provider.Name);
-            }
+            }*/
+            
             
             Console.WriteLine("Ends");
         }
