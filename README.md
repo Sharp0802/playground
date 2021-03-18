@@ -20,7 +20,7 @@ requested by Google Chrome to minimize this phenomenon.
 (But this means,
 this program requires you to write code
 for every site you want to apply)
-## Support Site
+## Supported Sites
 * * *
 |Site Name|Progress  |Namespace              |
 |--------:|:---------|:---------------------:|
