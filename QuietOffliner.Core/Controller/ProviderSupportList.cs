@@ -1,15 +1,15 @@
 ﻿namespace QuietOffliner.Core.Controller
 {
-	public struct ProviderSupportList
+	public readonly struct ProviderSupportList
 	{
-		public bool CanLogin;
+		public bool CanLogin { get; }
+
+		public bool EpisodeInfosPageIndexing { get; }
+		public bool RecentEpisodeInfosPageIndexing { get; }
 		
-		public bool EpisodeInfosPageIndexing;
-		public bool RecentEpisodeInfosPageIndexing;
-		
-		public bool CanLoadSeriesInfo;
-		public bool SeriesInfosPageIndexing;
-		public bool RecentSeriesInfosPageIndexing;
+		public bool CanLoadSeriesInfo { get; }
+		public bool SeriesInfosPageIndexing { get; }
+		public bool RecentSeriesInfosPageIndexing { get; }
 
 		public ProviderSupportList(
 			bool canLogin,
