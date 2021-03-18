@@ -30,4 +30,19 @@
       <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0-preview.2.21154.6" />
     </ItemGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\HttpHeaders.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>HttpHeaders.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\HttpHeaders.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>HttpHeaders.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>
