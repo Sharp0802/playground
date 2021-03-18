@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.IO;
 using System.Threading.Tasks;
 using QuietOffliner.Core.Controller.Web;
@@ -23,7 +24,7 @@ namespace QuietOffliner.Core.Controller
         public Task<Request<ImmutableArray<SeriesInfo>>> LoadAllSeriesInfos(SearchRequest request, int page = 0);
     }
     
-    public abstract class Provider : IProvider
+    public abstract class Provider : IProvider, IDisposable
     {
         protected Provider(
             string name,
@@ -49,5 +50,17 @@ namespace QuietOffliner.Core.Controller
         public abstract Task<Request<SeriesInfo?>> LoadSeriesInfo(string query);
         public abstract Task<Request<ImmutableArray<SeriesInfo>>> LoadRecentSeriesInfos(int page = 0);
         public abstract Task<Request<ImmutableArray<SeriesInfo>>> LoadAllSeriesInfos(SearchRequest request, int page = 0);
+
+        ~Provider()
+        {
+            Dispose();
+        }
+        
+        public void Dispose()
+        {
+            Client.Dispose();
+            
+            GC.SuppressFinalize(this);
+        }
     }
 }
