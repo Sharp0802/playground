@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using QuietOffliner.JMana.Controller;
 
@@ -9,7 +8,7 @@ namespace QuietOffliner.Cli
     {
         private static async Task Main()
         {
-            var provider = await Provider.New();
+            var provider = new JManaProvider(1);
 
             
             /*var req = await provider.LoadEpisode(429623.ToString());
@@ -34,19 +33,25 @@ namespace QuietOffliner.Cli
                 Console.WriteLine(ep.Name);
                 Console.WriteLine(ep.Provider.Name);
             }*/
-
-            var req = await provider.LoadRecentSeriesInfos();
+            
+            /*var req = await provider.LoadSeriesInfo("허구추리");
             
             Console.WriteLine(req.ResponseCode.ToString());
 
-            foreach (var series in req.Value)
+            Console.WriteLine(req.Value?.Name);
+            Console.WriteLine(req.Value?.Artist);
+            Console.WriteLine(req.Value?.Tags.Aggregate((c, n) => c + "," + n));
+            Console.WriteLine(req.Value?.Provider.Name);*/
+
+            var req = await provider.LoadRecentEpisodeInfos();
+
+            foreach (var ep in req.Value)
             {
-                Console.WriteLine(series.Name);
-                Console.WriteLine(series.Artist);
-                Console.WriteLine(series.Tags.Aggregate((c, n) => c + "," + n));
-                Console.WriteLine(series.Provider.Name);
+                Console.WriteLine(ep.Name);
+                Console.WriteLine(ep.Id);
+                Console.WriteLine(ep.Date?.ToString("yyyy-MM-dd"));
+                Console.WriteLine(ep.Provider.Name);
             }
-            
             
             Console.WriteLine("Ends");
         }
