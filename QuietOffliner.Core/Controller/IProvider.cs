@@ -10,12 +10,13 @@ namespace QuietOffliner.Core.Controller
     {
         public string Name { get; }
         public string HomePageUri { get; }
+        public ProviderSupportList SupportList { get; }
 
         public Task<Request<Episode?>> LoadEpisode(string id);
         public Task<Request<ImmutableArray<EpisodeInfo>>> LoadEpisodeInfos(string query, int page = 0);
         public Task<Request<ImmutableArray<EpisodeInfo>>> LoadRecentEpisodeInfos(int page = 0);
         
-        public Task<Request<SeriesInfo?>> LoadSeriesInfo(string query, int page = 0);
+        public Task<Request<SeriesInfo?>> LoadSeriesInfo(string query);
         public Task<Request<ImmutableArray<SeriesInfo>>> LoadRecentSeriesInfos(int page = 0);
         public Task<Request<ImmutableArray<SeriesInfo>>> LoadAllSeriesInfos(SearchRequest request, int page = 0);
     }
