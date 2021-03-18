@@ -116,8 +116,6 @@ namespace QuietOffliner.JMana.Controller
 
 		public override async Task<Request<ImmutableArray<EpisodeInfo>>> LoadRecentEpisodeInfos(int page = 0) //Verified
 		{
-			Console.WriteLine((page + 1).ToString());
-			
 			using var htmlMsg = await Client.SendAsync(() => DocsRequestHeader.CreateMsg(
 				$"{HomePageUri}/comic_recent?page={(page + 1).ToString()}",
 				HttpMethod.Get));
