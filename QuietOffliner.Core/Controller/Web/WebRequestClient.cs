@@ -16,9 +16,9 @@ namespace QuietOffliner.Core.Controller.Web
 		private CookieContainer CookieList { get; }
 		private HttpClient Client { get; }
 
-		public WebRequestClient(Func<TextWriter>? logStream = null)
+		public WebRequestClient(TextWriter? logStream = null)
 		{
-			LogStream = logStream is null ? Console.Out : logStream();
+			LogStream = logStream ?? Console.Out;
 
 			CookieList = new CookieContainer();
 			Handler = new HttpClientHandler
