@@ -24,7 +24,7 @@
 
     <ItemGroup>
       <EmbeddedResource Update="Resources\HttpHeaders.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
+        <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>HttpHeaders.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
