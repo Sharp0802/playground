@@ -28,7 +28,6 @@ add_library(probo STATIC
         src/component/input.cpp
         src/component/internal.cpp
         src/component/lifetime.cpp
-        src/component/threading.cpp
 
         inc/probo.hpp
         inc/component/audio.hpp
@@ -38,5 +37,4 @@ add_library(probo STATIC
         inc/component/internal.hpp
         inc/component/lamp.hpp
         inc/component/lifetime.hpp
-        inc/component/motor.hpp
-        inc/component/threading.hpp)
+        inc/component/motor.hpp)
