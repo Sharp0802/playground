@@ -2,9 +2,7 @@
 #ifndef DIAGNOSTICS_HPP
 #define DIAGNOSTICS_HPP
 
-#define PURE __attribute__((pure))
-#define CONST __attribute__((const))
-#define NODISCARD [[nodiscard]]
+#include "internal.hpp"
 
 namespace Probo::Diagnostics
 {
@@ -34,9 +32,5 @@ namespace Probo::Diagnostics
 		~Stopwatch();
 	};
 }
-
-#undef PURE
-#undef CONST
-#undef NODISCARD
 
 #endif

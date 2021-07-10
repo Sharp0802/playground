@@ -2,7 +2,6 @@
 #define INTERNAL_HPP
 
 #include <stdint.h>
-
 #include "api.h"
 
 #define PURE __attribute__((pure))
@@ -68,9 +67,5 @@ namespace Probo::Internal
 
 	NODISCARD unsigned char GetBothEdge(unsigned char port);
 }
-
-#undef PURE
-#undef CONST
-#undef NODISCARD
 
 #endif

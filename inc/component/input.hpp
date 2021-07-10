@@ -4,10 +4,6 @@
 
 #include "internal.hpp"
 
-#define PURE __attribute__((pure))
-#define CONST __attribute__((const))
-#define NODISCARD [[nodiscard]]
-
 using namespace Probo::Internal;
 
 namespace Probo::Input
@@ -60,9 +56,5 @@ namespace Probo::Input
 		static DirectionFlag GetFront();
 	};
 }
-
-#undef PURE
-#undef CONST
-#undef NODISCARD
 
 #endif //INPUT_HPP
