@@ -3,20 +3,20 @@
 
 namespace Probo::Memory::NonVolatile
 {
-    class EEPROM
-    {
-    private:
-        static bool Initialized;
+	class EEPROM
+	{
+	private:
+		static bool Initialized;
 
-        static void Initialize();
+		static void Initialize();
 
-    public:
-        static unsigned int CurrentTop;
+	public:
+		static unsigned int CurrentTop;
 
-        static unsigned char Register(void *adr, unsigned int size);
+		static unsigned char Register(void *adr, unsigned int size);
 
-        static unsigned char Unregister(void *adr, unsigned int size);
-    };
+		static unsigned char Unregister(void *adr, unsigned int size);
+	};
 }
 
 

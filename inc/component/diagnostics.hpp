@@ -8,31 +8,31 @@
 
 namespace Probo::Diagnostics
 {
-    class Stopwatch
-    {
-    private:
-        bool         UseAutoInterruptFlash = false;
-        bool         HasStopped            = false;
-        unsigned int StartedTime           = 0;
-        unsigned int StoppedTime           = 0;
-        static int   InstanceCount;
-    public:
-        Stopwatch(Stopwatch &) = delete;
+	class Stopwatch
+	{
+	private:
+		bool         UseAutoInterruptFlash = false;
+		bool         HasStopped            = false;
+		unsigned int StartedTime           = 0;
+		unsigned int StoppedTime           = 0;
+		static int   InstanceCount;
+	public:
+		Stopwatch(Stopwatch &) = delete;
 
-        explicit Stopwatch(bool autoInterruptFlash);
+		explicit Stopwatch(bool autoInterruptFlash);
 
-        void Start();
+		void Start();
 
-        void Stop();
+		void Stop();
 
-        NODISCARD unsigned int GetElapsedMs() const;
+		NODISCARD unsigned int GetElapsedMs() const;
 
-        void Restart();
+		void Restart();
 
-        void Reset();
+		void Reset();
 
-        ~Stopwatch();
-    };
+		~Stopwatch();
+	};
 }
 
 #undef PURE

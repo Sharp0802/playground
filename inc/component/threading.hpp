@@ -4,10 +4,10 @@
 
 namespace Probo::Threading
 {
-    class Thread
-    {
+	class Thread
+	{
 
-    };
+	};
 }
 
 

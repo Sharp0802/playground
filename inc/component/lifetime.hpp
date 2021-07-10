@@ -4,20 +4,20 @@
 
 namespace Probo::Lifetime
 {
-    class MainInitializer
-    {
-    private:
-        void (*Init)();
+	class MainInitializer
+	{
+	private:
+		void (*Init)();
 
-        void (*Main)();
+		void (*Main)();
 
-        void (*Dispose)();
+		void (*Dispose)();
 
-        int Activate();
+		int Activate();
 
-    public:
-        explicit MainInitializer(void (*init)(), void (*main)(), void (*dispose)());
-    };
+	public:
+		explicit MainInitializer(void (*init)(), void (*main)(), void (*dispose)());
+	};
 }
 
 #endif //LIFETIME_HPP
