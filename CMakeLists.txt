@@ -11,7 +11,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 set(CMAKE_C_COMPILER avr-gcc)
 set(CMAKE_CXX_COMPILER avr-g++)
 
-add_compile_options(-Os -fomit-frame-pointer -mno-int8 -Wall --std=gnu++2a)
+add_compile_options(-Os -fomit-frame-pointer -fexceptions -mno-int8 -Wall --std=gnu++2a)
 
 add_compile_options(-mmcu=atmega8a)
 add_link_options(-mmcu=atmega8a)
