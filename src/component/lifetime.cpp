@@ -23,7 +23,7 @@ int MainInitializer::Activate()
 		for (unsigned char i = 0; i < 3; ++i)
 		{
 			Buzzer::Play(WaveType::Do, 4, 100);
-			Thread::Sleep(100)
+			Thread::Sleep(100);
 		}
 		return -1;
 	}
