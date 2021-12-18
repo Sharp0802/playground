@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Probo.EasyLoader (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Probo.EasyLoader (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
