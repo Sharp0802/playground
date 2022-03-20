@@ -7,5 +7,5 @@ class proc
 public:
 	static std::string exec(const std::string& cmd);
 
-	static std::string avrdude(int port, const std::string& file);
+	static void avrdude(int port, const std::string& file);
 };
