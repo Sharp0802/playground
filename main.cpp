@@ -5,6 +5,9 @@
 
 int main()
 {
-	std::cout << proc::exec("echo 'Hello World!'");
+	com port(0);
+	port.open();
+	proc::avrdude(0, "main.hex");
+	port.close();
     return 0;
 }
