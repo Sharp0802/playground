@@ -16,3 +16,9 @@ std::string proc::exec(const std::string& cmd)
 		stream << buf.data();
 	return stream.str();
 }
+std::string proc::avrdude(const std::string& port, const std::string& file)
+{
+	std::stringstream stream;
+	stream << "avrdude -p m8 -c avrispv2 -P " << port << " -U flash:w:" << file;
+	return exec(stream.str());
+}
