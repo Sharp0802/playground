@@ -17,6 +17,11 @@ com::com(int port_number) : port_number(port_number)
 
 }
 
+com::~com()
+{
+	close();
+}
+
 void com::open(const int port_number, int* __restrict handle, termios* __restrict pre_open_state)
 {
 	std::stringstream com_name_stream;
@@ -79,7 +84,16 @@ void com::open()
 	{
 		if (opened)
 			throw std::runtime_error("the com port is already opened");
-		open(port_number, &com_handle, &com_pre_open_state);
+		try
+		{
+			open(port_number, &com_handle, &com_pre_open_state);
+		}
+		catch (const std::exception& exception)
+		{
+			std::stringstream stream;
+			stream << "error occurred: " << exception.what() << "(errno: " << errno << ")";
+			throw std::runtime_error(stream.str());
+		}
 		sleep_for(sleep_duration);
 		opened = true;
 	}
@@ -90,7 +104,7 @@ void com::close()
 	lock(lock_handle)
 	{
 		if (!opened)
-			throw std::runtime_error("the com port is not opened");
+			return;
 		tcsetattr(com_handle, TCSANOW, &com_pre_open_state);
 		sleep_for(sleep_duration);
 		::close(com_handle);

@@ -53,6 +53,8 @@ private:
 public:
 	explicit com(int port_number);
 
+	~com();
+
 	void open();
 
 	void close();
