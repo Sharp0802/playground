@@ -7,4 +7,4 @@ include_directories(./inc)
 
 add_compile_options(-Wall -O2)
 
-add_executable(probo_sdk main.cpp src/com.cpp inc/com.hpp)
+add_executable(probo_sdk main.cpp src/com.cpp inc/com.hpp src/proc.cpp inc/proc.hpp)
