@@ -17,5 +17,5 @@ Developerment is not complete, So if you find any bugs, Please report them in th
 
 - Visual Studio 2022
 	+ Desktop development with C++
-	+ C++ Clang-cl for v*** build tools (x64/x86)
-	+ c++ Clang Compiler for Windows (*.*.*)
+	+ C++ Clang-cl for v\*\*\* build tools (x64/x86)
+	+ c++ Clang Compiler for Windows (\*.\*.\*)
