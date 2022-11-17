@@ -13,7 +13,7 @@ INT APIENTRY _tWinMain(_In_ HINSTANCE hInst, _In_opt_ HINSTANCE, _In_ LPTSTR, _I
 			HRESULT hr = app->Initialize();
 			if (SUCCEEDED(hr))
 				app->RunMessageLoop();
-			DialogWhenError(hr);
+			DialogWhenError(hr, TEXT("\n\nFailed to initialize application."));
 			delete app;
 		}
 		CoUninitialize();

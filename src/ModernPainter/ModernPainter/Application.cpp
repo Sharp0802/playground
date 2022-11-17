@@ -101,12 +101,7 @@ HRESULT Application::CreateDeviceIndependentResources()
             D2D1::RenderTargetProperties(),
             D2D1::HwndRenderTargetProperties(_hWnd, size),
             &_d2dRenderTarget);
-
-        if (SUCCEEDED(hr))
-        {
-            if (_palette != nullptr)
-            {
-                delete _palette;
+        DialogWhenError(hr, TEXT("\n\nFailed to create ID2D1HwndRenderTarget."));
             }
             _palette = new Palette(_d2dRenderTarget);
         }
@@ -130,6 +125,8 @@ HRESULT Application::CreateDeviceResources()
             D2D1::RenderTargetProperties(), 
             D2D1::HwndRenderTargetProperties(_hWnd, size), 
             &_d2dRenderTarget);
+        DialogWhenError(hr, TEXT("\n\nFailed to create ID2D1HwndRenderTarget."));
+    }
 
         if (SUCCEEDED(hr))
         {
@@ -225,7 +222,7 @@ LRESULT Application::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
             break;
 
         case WM_PAINT:
-            DialogWhenError(app->OnRender());
+            DialogWhenError(app->OnRender(), TEXT("\n\nFailed to render application."));
             ValidateRect(hWnd, NULL);
             handled = true;
             break;

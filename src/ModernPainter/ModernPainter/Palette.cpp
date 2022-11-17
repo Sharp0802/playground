@@ -31,7 +31,7 @@ HRESULT Palette::Get(const D2D1::ColorF& color, ID2D1SolidColorBrush** brush)
 	if (!_palette->ContainsKey(key))
 	{
 		hr = _d2d1RenderTarget->CreateSolidColorBrush(color, brush);
-		DialogWhenError(hr);
+		DialogWhenError(hr, TEXT("Failed to create ID2D1SolidColorBrush."));
 		if (SUCCEEDED(hr))
 		{
 			_palette->TryAdd(key, *brush);
