@@ -170,6 +170,8 @@
     <ClCompile Include="Palette.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="SpinLock.cpp" />
+    <ClCompile Include="Theme.cpp" />
+    <ClCompile Include="ToolPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -181,6 +183,8 @@
     <ClInclude Include="Palette.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="SpinLock.h" />
+    <ClInclude Include="Theme.h" />
+    <ClInclude Include="ToolPanel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
