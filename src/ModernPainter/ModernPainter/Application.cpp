@@ -1,4 +1,4 @@
-#include "Application.h"
+﻿#include "Application.h"
 #include "ErrorDialog.h"
 #include "MenuPanel.h"
 
@@ -7,6 +7,7 @@ Application::Application(const HINSTANCE hInst) :
 	_hWnd(nullptr),
 	_d2dFactory(nullptr),
 	_d2dRenderTarget(nullptr),
+    _theme(nullptr),
     _palette(nullptr)
 {
 }
@@ -15,6 +16,7 @@ Application::~Application()
 {
 	SafeRelease(&_d2dFactory);
 	SafeRelease(&_d2dRenderTarget);
+    delete _theme;
     delete _palette;
     _palette = nullptr;
     for (size_t i = 0; i < _panels.Size; ++i)
@@ -88,7 +90,10 @@ HRESULT Application::CreateDeviceIndependentResources()
 {
     HRESULT hr;
 
+    _theme = new Theme();
+
     hr = D2D1CreateFactory(D2D1_FACTORY_TYPE_MULTI_THREADED, &_d2dFactory);
+    DialogWhenError(hr, TEXT("\n\nFailed to create ID2D1Factory."));
 
     if (SUCCEEDED(hr))
     {
@@ -102,9 +107,6 @@ HRESULT Application::CreateDeviceIndependentResources()
             D2D1::HwndRenderTargetProperties(_hWnd, size),
             &_d2dRenderTarget);
         DialogWhenError(hr, TEXT("\n\nFailed to create ID2D1HwndRenderTarget."));
-            }
-            _palette = new Palette(_d2dRenderTarget);
-        }
     }
 
     return hr;
@@ -113,8 +115,9 @@ HRESULT Application::CreateDeviceIndependentResources()
 HRESULT Application::CreateDeviceResources()
 {
     HRESULT hr = S_OK;
+    bool init = !_d2dRenderTarget;
 
-    if (!_d2dRenderTarget)
+    if (init)
     {
         RECT rc;
         GetClientRect(_hWnd, &rc);
@@ -128,14 +131,15 @@ HRESULT Application::CreateDeviceResources()
         DialogWhenError(hr, TEXT("\n\nFailed to create ID2D1HwndRenderTarget."));
     }
 
-        if (SUCCEEDED(hr))
-        {
-            if (_palette != nullptr)
-            {
-                delete _palette;
-            }
-            _palette = new Palette(_d2dRenderTarget);
-        }
+    if (_palette == nullptr)
+    {
+        _palette = new Palette(_d2dRenderTarget);
+        _theme->Update(_palette);
+    }
+
+    if (init && _palette)
+    {
+        _palette->EnsureRenderTarget(_d2dRenderTarget);
     }
 
     return hr;
@@ -171,7 +175,7 @@ HRESULT Application::OnRender()
 
         for (Panel* panel : _panels)
         {
-            panel->Render(width, height, _palette, _d2dRenderTarget);
+            panel->Render(width, height, _palette, _theme, _d2dRenderTarget);
         }
         
         hr = _d2dRenderTarget->EndDraw();

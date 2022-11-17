@@ -4,6 +4,7 @@
 #include "Palette.h"
 #include "Panel.h"
 #include "List.h"
+#include "Theme.h"
 
 class Application
 {
@@ -21,6 +22,7 @@ private:
 	ID2D1Factory* _d2dFactory;
 	ID2D1HwndRenderTarget* _d2dRenderTarget;
 
+	Theme* _theme;
 	Palette* _palette;
 	List<Panel*> _panels;
 

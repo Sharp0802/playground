@@ -23,6 +23,11 @@ __int128_t Palette::GetKey(const D2D1::ColorF& color)
 	return *reinterpret_cast<__int128_t*>(const_cast<D2D1::ColorF*>(&color));
 }
 
+void Palette::EnsureRenderTarget(ID2D1HwndRenderTarget* renderTarget)
+{
+	_d2d1RenderTarget = renderTarget;
+}
+
 HRESULT Palette::Get(const D2D1::ColorF& color, ID2D1SolidColorBrush** brush)
 {
 	HRESULT hr = S_OK;
