@@ -102,7 +102,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>-fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/permissive -fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,7 +120,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>-fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/permissive -fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -136,7 +138,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>-fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/permissive -fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -153,7 +156,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>-fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/permissive -fms-compatibility -fdelayed-template-parsing -msse4.1 %(AdditionalOptions)</AdditionalOptions>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -164,24 +168,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="ButtonPanel.cpp" />
     <ClCompile Include="ErrorDialog.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuPanel.cpp" />
     <ClCompile Include="Palette.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="SpinLock.cpp" />
     <ClCompile Include="Theme.cpp" />
     <ClCompile Include="ToolPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="ButtonPanel.h" />
     <ClInclude Include="ErrorDialog.h" />
+    <ClInclude Include="EventSource.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuPanel.h" />
     <ClInclude Include="Palette.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="SpinLock.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="ToolPanel.h" />
