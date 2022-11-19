@@ -1,10 +1,14 @@
 #pragma once
 
 #include "framework.h"
+#include "EventSource.h"
 #include "Palette.h"
 #include "Panel.h"
 #include "List.h"
 #include "Theme.h"
+
+#define REF_APP_INST extern Application* ApplicationInstance
+
 
 class Application
 {
@@ -14,6 +18,9 @@ public:
 
 	HRESULT Initialize();
 	void RunMessageLoop();
+
+public:
+	EventSource<WPARAM, LPARAM> OnMouseEvnetRaised;
 
 private:
 	HINSTANCE _hInst;

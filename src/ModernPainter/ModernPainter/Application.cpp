@@ -2,6 +2,9 @@
 #include "ErrorDialog.h"
 #include "MenuPanel.h"
 
+
+Application* ApplicationInstance;
+
 Application::Application(const HINSTANCE hInst) :
 	_hInst(hInst),
 	_hWnd(nullptr),
@@ -10,6 +13,7 @@ Application::Application(const HINSTANCE hInst) :
     _theme(nullptr),
     _palette(nullptr)
 {
+    ApplicationInstance = this;
 }
 
 Application::~Application()
@@ -228,6 +232,11 @@ LRESULT Application::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
         case WM_PAINT:
             DialogWhenError(app->OnRender(), TEXT("\n\nFailed to render application."));
             ValidateRect(hWnd, NULL);
+            handled = true;
+            break;
+
+        case WM_MOUSEMOVE:
+            app->OnMouseEvnetRaised(wParam, lParam);
             handled = true;
             break;
 

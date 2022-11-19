@@ -4,6 +4,7 @@
 #pragma comment(lib, "dwmapi.lib")
 
 #include <windows.h>
+#include <windowsx.h>
 #include <uxtheme.h>
 #include <dwmapi.h>
 #include <comdef.h>
@@ -12,6 +13,7 @@
 #include <cstdlib>
 #include <cstdint>
 #include <cstring>
+#include <random>
 
 #include <intrin.h>
 
