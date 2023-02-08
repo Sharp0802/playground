@@ -24,7 +24,7 @@ HWND NODE_Create(struct NODE *this);
 
 size_t NewID()
 {
-    return 20000 + curID++;
+    return UI_STACKBASE + curID++;
 }
 
 struct UI_STACK NewUIStack(HWND hWnd, int x, int y, int width, int height, int spacing)

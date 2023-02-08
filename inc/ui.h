@@ -4,6 +4,7 @@
 #include "fw.h"
 
 #define UI_AUTO 0
+#define UI_STACKBASE 10000
 
 enum CLASS
 {
