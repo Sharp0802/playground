@@ -1,8 +1,9 @@
 #include "fw.h"
+#include "ui.h"
 
 #define CREDIT            \
     "lwman (LWMAN) 0.1\n" \
-    "This is free software; see the source for copying conditions.\n"
+    "This is free software; see the source for copying conditions."
 
 #define CLASS_NAME "lwman"
 #define APP_NAME "lwman"
@@ -23,11 +24,14 @@
 
 #define MARGIN 10
 #define SPACING 5
+
+#undef COL_HV
+#undef COL_H
+#undef COL_L
+
 #define COL_HV 20
 #define COL_H(c) (c * (COL_HV + SPACING) + MARGIN)
 #define COL_L ((HEIGHT - 2 * MARGIN - SPACING) / (COL_HV + SPACING) - 1) // 22
-
-void InitWindow(void);
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
@@ -49,7 +53,7 @@ int main(void)
         TEXT(CLASS_NAME),
         TEXT(APP_NAME),
         WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME,
-        CW_USEDEFAULT, CW_USEDEFAULT, WIDTH + 5, HEIGHT,
+        CW_USEDEFAULT, CW_USEDEFAULT, WIDTH, HEIGHT,
         NULL,
         NULL,
         hInstance,
@@ -91,28 +95,43 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         const int width = WIDTH - 2 * MARGIN;
+        const int height = HEIGHT - 2 * MARGIN;
         const int btW = 60;
 
-        // credit field
-        CreateChild(hwnd, TEXT("STATIC"), WS_NONE, 0, 2, 0, width, IDC_ST_CREDIT, TEXT(CREDIT));
+        struct UI_STACK ui = NewUIStack(hwnd, MARGIN, MARGIN, width, height, SPACING);
 
-        // browse button
-        CreateChild(hwnd, TEXT("BUTTON"), WS_NONE, 2, 2, width - btW, btW, IDC_BT_BROWSE, TEXT("Browse"));
-        // path field
-        CreateChild(hwnd, TEXT("EDIT"), WS_BORDER, 2, 2, 0, width - (btW + SPACING), IDC_IN_PATH, TEXT("C:\\Users\\"));
-        // load button
-        CreateChild(hwnd, TEXT("BUTTON"), WS_NONE, 4, 1, 0, width, IDC_BT_LOAD, TEXT("Load"));
+        struct NODE credit = ui.lpfnTop(&ui, C_ST, 2, 0, UI_AUTO);
+        credit.lpfnStyle(&credit, WS_NONE, TEXT(CREDIT));
+        credit.lpfnCreate(&credit);
 
-        // preview header
-        CreateChild(hwnd, TEXT("STATIC"), WS_NONE, 6, 1, 0, width, IDC_ST_PREVIEW, TEXT("Preview"));
+        struct NODE path = ui.lpfnTop(&ui, C_IN, 2, 0, width - btW - SPACING);
+        path.lpfnStyle(&path, WS_BORDER, TEXT("C:\\Users\\"));
+        path.lpfnCreate(&path);
 
-        // info header
-        CreateChild(hwnd, TEXT("STATIC"), WS_NONE, COL_L - 7, 1, 0, width, IDC_ST_DETAILS, TEXT("Details"));
-        // info desc
-        CreateChild(hwnd, TEXT("STATIC"), WS_VSCROLL | SS_WHITERECT, COL_L - 6, 5, 0, width, IDC_ST_DETAILS_DESC, TEXT("Details.Desc"));
+        struct NODE browse = ui.lpfnTop(&ui, C_BN, 2, 0, btW);
+        browse.lpfnStyle(&browse, WS_NONE, TEXT("Browse"));
+        browse.lpfnCreate(&browse);
 
-        // set button
-        CreateChild(hwnd, TEXT("BUTTON"), WS_NONE, COL_L - 1, 2, 0, width, IDC_BT_SET, TEXT("Set"));
+        struct NODE load = ui.lpfnTop(&ui, C_BN, 1, 0, UI_AUTO);
+        load.lpfnStyle(&load, WS_NONE, TEXT("Load"));
+        load.lpfnCreate(&load);
+
+        struct NODE preview = ui.lpfnTop(&ui, C_ST, 1, 0, UI_AUTO);
+        preview.lpfnStyle(&preview, WS_NONE, TEXT("Preview"));
+        preview.lpfnCreate(&preview);
+
+        
+        struct NODE set = ui.lpfnBottom(&ui, C_BN, 1, 0, UI_AUTO);
+        set.lpfnStyle(&set, WS_NONE, TEXT("Set"));
+        set.lpfnCreate(&set);
+
+        struct NODE desc = ui.lpfnBottom(&ui, C_ST, 6, 1, UI_AUTO);
+        desc.lpfnStyle(&desc, WS_VSCROLL, TEXT("Details, Desc"));
+        desc.lpfnCreate(&desc);
+
+        struct NODE details = ui.lpfnBottom(&ui, C_ST, 1, 0, UI_AUTO);
+        details.lpfnStyle(&details, WS_NONE, TEXT("Details"));
+        details.lpfnCreate(&details);
 
         return 0;
     }
