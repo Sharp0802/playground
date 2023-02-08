@@ -71,7 +71,7 @@ struct NODE STACK_Top(struct UI_STACK *this, enum CLASS cls, int span, int offse
 {
     if (offset != 0)
     {
-        this->t_col += offset;
+        this->t_col += offset + 1;
         this->t_x = 0;
     }
     else if (this->w < this->t_x + this->s + width)
@@ -85,7 +85,7 @@ struct NODE STACK_Top(struct UI_STACK *this, enum CLASS cls, int span, int offse
         if (this->t_x != 0)
             this->t_x += this->s;
 
-        if (this->t_x == this->w)
+        if (this->t_x >= this->w)
         {
             width = this->w - this->s;
             this->t_x = 0;
@@ -96,11 +96,12 @@ struct NODE STACK_Top(struct UI_STACK *this, enum CLASS cls, int span, int offse
             width = this->w - this->t_x - this->s;
         }
     }
-
+    
     struct NODE ret = NewNode(cls, this->hWnd, this->t_x + this->x, COL_Y(this->t_col, COL_HC, this->s) + this->y, width, COL_H(span, this->s), WS_DEFAULT, TEXT(""));
 
     this->t_x += width;
-    this->t_col += span - 1;
+    if (this->w <= this->t_x + this->s)
+        this->t_col += span - 1;
 
     return ret;
 }
@@ -109,7 +110,7 @@ struct NODE STACK_Bottom(struct UI_STACK *this, enum CLASS cls, int span, int of
 {
     if (offset != 0)
     {
-        this->b_col -= offset;
+        this->b_col -= offset + 1;
         this->b_x = 0;
     }
 
@@ -124,7 +125,7 @@ struct NODE STACK_Bottom(struct UI_STACK *this, enum CLASS cls, int span, int of
         if (this->b_x != 0)
             this->b_x += this->s;
 
-        if (this->b_x == this->w)
+        if (this->b_x >= this->w)
         {
             width = this->w - this->s;
             this->b_x = 0;
@@ -135,8 +136,10 @@ struct NODE STACK_Bottom(struct UI_STACK *this, enum CLASS cls, int span, int of
             width = this->w - this->b_x - this->s;
         }
     }
-    
-    this->b_col -= span - 1;
+
+
+    if (this->w <= this->b_x + width + this->s)
+        this->b_col -= span - 1;
 
     struct NODE ret = NewNode(cls, this->hWnd, this->b_x + this->x, COL_Y(this->b_col, COL_HC, this->s) + this->y, width, COL_H(span, this->s), WS_DEFAULT, TEXT(""));
 
