@@ -71,8 +71,6 @@ int main(void)
     return 0;
 }
 
-#define SIZE(w, h)
-
 void CreateChild(HWND hwnd, LPCTSTR lpszCls, int style, int column, int span, int x, int width, size_t id, LPCTSTR lpszContent)
 {
     CreateWindow(
@@ -128,13 +126,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_COMMAND:
     {
+        WORD hiword = HIWORD(wParam);
         switch (LOWORD(wParam))
         {
         case IDC_BT_BROWSE:
             break;
         case IDC_BT_LOAD:
             break;
-        case IDC_IN_PATH:
+        case IDC_BT_SET:
             break;
         }
         return 0;
