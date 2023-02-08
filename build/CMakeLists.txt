@@ -16,4 +16,6 @@ set_target_properties(lwman PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ../bin
     RUNTIME_OUTPUT_DIRECTORY ../bin)
 
-target_compile_options(lwman PRIVATE -Wall -Wextra -O2 -finput-charset=UTF-8 -mwindows)
+target_compile_definitions(lwman PUBLIC _UNICODE UNICODE)
+
+target_compile_options(lwman PRIVATE -Wall -Wextra -O3)
