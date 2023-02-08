@@ -45,8 +45,6 @@ struct UI_STACK
     int b_x;
     int b_col;
 
-    char mode;
-
     struct NODE (*lpfnTop)(struct UI_STACK *this, enum CLASS cls, int span, int offset, int width);
     struct NODE (*lpfnBottom)(struct UI_STACK *this, enum CLASS cls, int span, int offset, int width);
 };
