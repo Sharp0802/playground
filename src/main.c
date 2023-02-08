@@ -10,28 +10,11 @@
 
 #define WS_NONE 0
 
-#define IDC_ST_CREDIT (10000)
-#define IDC_BT_BROWSE (10001)
-#define IDC_BT_LOAD (10002)
-#define IDC_IN_PATH (10003)
-#define IDC_ST_PREVIEW (10010)
-#define IDC_ST_DETAILS (10100)
-#define IDC_ST_DETAILS_DESC (10200)
-#define IDC_BT_SET (11000)
-
 #define WIDTH 420
 #define HEIGHT 620
 
 #define MARGIN 10
 #define SPACING 5
-
-#undef COL_HV
-#undef COL_H
-#undef COL_L
-
-#define COL_HV 20
-#define COL_H(c) (c * (COL_HV + SPACING) + MARGIN)
-#define COL_L ((HEIGHT - 2 * MARGIN - SPACING) / (COL_HV + SPACING) - 1) // 22
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
@@ -73,19 +56,6 @@ int main(void)
     }
 
     return 0;
-}
-
-void CreateChild(HWND hwnd, LPCTSTR lpszCls, int style, int column, int span, int x, int width, size_t id, LPCTSTR lpszContent)
-{
-    CreateWindow(
-        lpszCls,
-        lpszContent,
-        WS_CHILD | WS_VISIBLE | style,
-        x + MARGIN, COL_H(column), width, COL_HV * span + (span - 1) * SPACING,
-        hwnd,
-        (HMENU)id,
-        GetModuleHandle(NULL),
-        NULL);
 }
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -148,12 +118,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         WORD hiword = HIWORD(wParam);
         switch (LOWORD(wParam))
         {
+            /*
         case IDC_BT_BROWSE:
             break;
         case IDC_BT_LOAD:
             break;
         case IDC_BT_SET:
             break;
+            */
         }
         return 0;
     }
