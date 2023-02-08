@@ -109,7 +109,7 @@ struct NODE STACK_Bottom(struct UI_STACK *this, enum CLASS cls, int span, int of
 {
     if (offset != 0)
     {
-        this->b_col += offset;
+        this->b_col -= offset;
         this->b_x = 0;
     }
 
@@ -135,11 +135,12 @@ struct NODE STACK_Bottom(struct UI_STACK *this, enum CLASS cls, int span, int of
             width = this->w - this->b_x - this->s;
         }
     }
+    
+    this->b_col -= span - 1;
 
     struct NODE ret = NewNode(cls, this->hWnd, this->b_x + this->x, COL_Y(this->b_col, COL_HC, this->s) + this->y, width, COL_H(span, this->s), WS_DEFAULT, TEXT(""));
 
     this->b_x += width;
-    this->b_col -= span - 1;
 
     return ret;
 }
