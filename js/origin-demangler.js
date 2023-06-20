@@ -1,9 +1,7 @@
 
 "strict";
 
-fetch(browser.runtime.getURL("res/origin-demangler.wasm"))
-    .then(response => response.arrayBuffer())
-    .then(bytes => WebAssembly.instantiate(bytes, {}))
+WebAssembly.instantiateStreaming(fetch(browser.runtime.getURL("res/origin-demangler.wasm")), {})
     .then(wasm => {
         console.log("wasm loaded");
         wasm.instance.exports.main();
