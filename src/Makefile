@@ -11,12 +11,13 @@ TARGETS := $(wildcard *.c)
 OBJECTS := $(TARGETS:.c=.o)
 
 all: $(OBJECTS)
-	$(CC) $(LDFLAGS) $^ -o $(NAME)
+	$(CC) $(LDFLAGS) $(addprefix tmp/,$^) -o ../res/$(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	mkdir -p tmp
+	$(CC) $(CFLAGS) -c $< -o tmp/$@	
 
 clean:
-	rm -f *.o
+	rm -rf tmp
 
 .PHONY: all clean

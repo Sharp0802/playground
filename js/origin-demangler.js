@@ -1,7 +1,7 @@
 
 "strict";
 
-fetch(browser.runtime.getURL("src/origin-demangler.wasm"))
+fetch(browser.runtime.getURL("res/origin-demangler.wasm"))
     .then(response => response.arrayBuffer())
     .then(bytes => WebAssembly.instantiate(bytes, {}))
     .then(wasm => {
