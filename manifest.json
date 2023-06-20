@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"name": "Origin Demangler",
+	"version": "0.0.1",
+	"description": "Helps to find origin and meaning of English words",
+	"icons": {},
+
+	"content_scripts": [
+		{
+			"matches": ["*://*"],
+			"js": ["src/origin-demangler.js"]
+		}
+	],
+
+	"web_accessible_resources": [
+		"src/origin-demangler.wasm",
+		"style/origin-demangler.css"
+	]
+}
