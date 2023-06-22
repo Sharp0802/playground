@@ -13,7 +13,6 @@
 	],
 
 	"web_accessible_resources": [
-		"res/origin-demangler.wasm",
 		"style/origin-demangler.css"
 	]
 }
